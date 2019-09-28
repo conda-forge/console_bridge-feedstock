@@ -10,8 +10,8 @@ source:
   sha256: 9f024a38f0947ed9fa67f58829980c2d90d84740e6de20d75cb00866f07a7a0b
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
@@ -23,8 +23,10 @@ test:
   requires:
     - pkg-config
   commands:
-    - pkg-config --modversion {{ name }}
-    - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT
+    - pkg-config --modversion {{ name }}  # [unix or osx]
+    - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT  # [unix or osx]
+    - if exist %PREFIX%\\Library\\CMake\\console_bridge-targets.cmake (exit 0) else (exit 1)  # [win]
+    - if exist %PREFIX%\\Library\\CMake\\console_bridge-config.cmake (exit 0) else (exit 1)  # [win]
 
 about:
   home: http://github.com/ros/console_bridge
