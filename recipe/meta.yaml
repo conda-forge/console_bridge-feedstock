@@ -1,5 +1,5 @@
 {% set name = "console_bridge" %}
-{% set version = "0.4.4" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 1147af6ad6477fcfd640c543684e17ee540e434aa70d6f31c1d137bc86fb937c
+  sha256: 1cecdf232b1eb883b41cc50d1d38443b2163fdc0497072dc1aa6e7ba30696060
 
 build:
   number: 0
@@ -33,7 +33,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.'
+  summary: A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.
   dev_url: https://github.com/ros/console_bridge
 
 extra:
