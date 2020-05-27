@@ -1,5 +1,5 @@
 {% set name = "console_bridge" %}
-{% set version = "0.5.1" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: c4ad60c82cd510d4078273a9e210faed572bef6014322456afd14999d2daf130
+  sha256: 880bbded7fcdc71479e9b1efc3ba5353f08eed23f0009c93d6bea8ba3974d078
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
