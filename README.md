@@ -5,7 +5,7 @@ Home: http://github.com/ros/console_bridge
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.
 
