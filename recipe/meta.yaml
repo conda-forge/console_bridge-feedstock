@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/ros/{{ name }}/archive/{{ version }}.tar.gz
   sha256: 303a619c01a9e14a3c82eb9762b8a428ef5311a6d46353872ab9a904358be4a4
+  patches:
+    - 96.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
@@ -25,7 +27,9 @@ test:
   requires:
     - pkg-config
   commands:
-    - pkg-config --modversion {{ name }}  # [unix or osx]
+    - pkg-config --modversion {{ name }}
+    - pkg-config --exists --print-errors --debug {{ name }}
+    - pkg-config --validate --print-errors --debug {{ name }}
     - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT  # [unix or osx]
     - if exist %PREFIX%\\Library\\CMake\\console_bridge-targets.cmake (exit 0) else (exit 1)  # [win]
     - if exist %PREFIX%\\Library\\CMake\\console_bridge-config.cmake (exit 0) else (exit 1)  # [win]
